@@ -1,5 +1,5 @@
 '''
-This script creates a tkinter app to analyse all channels of a wav file.
+This script creates a tkinter app to analyse all channels of a '*.wav' file.
 Written By: Eyal Cohen
 '''
 import matplotlib.pyplot as plt
@@ -31,16 +31,17 @@ def plotView(fig, dataToView, num, channel_cnt):
 def viewData(data):
     plot_flag = 0
     try:
-        print(len(data[1][0]), "channels on this .wav file")
-        fig = plt.figure(figsize=(15, 8))
-        plt.subplots_adjust(wspace=0.4, hspace=0.4)
+        # print(len(data[1][0]), "channels on this .wav file")
+        if len(data[1][0]):
+            fig = plt.figure(figsize=(15, 8))
+            plt.subplots_adjust(wspace=0.4, hspace=0.4)
         for i in range(len(data[1][0])):
             plot_flag = 1
             specgramView(fig, data[0], data[1][:, i],  i + 1, len(data[1][0]))
             plotView(fig, data[1][:, i], i + 1, len(data[1][0]))
     except:
         plot_flag = 1
-        print("1 channel on this .wav file")
+        # print("1 channel on this .wav file")
         fig = plt.figure(figsize=(15, 4))
         specgramView(fig, data[0], data[1], 1, 1)
         plotView(fig, data[1], 1, 1)
@@ -54,7 +55,7 @@ def UploadBtnAction(selected_file_label,event = None):
     selected_file = filedialog.askopenfilename()
     selected_file_name = selected_file.split("/")[len(selected_file.split("/")) - 1]
     selected_file_label.config(text = "Selected:    " + str(selected_file_name))
-    print('Selected File Path: ', selected_file)
+    # print('Selected File Path: ', selected_file)
 
 def ViewBtnAction(event=None):
     global selected_file
@@ -70,8 +71,13 @@ def createAndRunApp():
     root.geometry("400x200")
 
     # explenation label
-    exp_label = tk.Label(master= root , text="choose a file using the 'Upload' button \n Then click 'View Data'" ,font='Consolas 12' )
-    exp_label.place(x = 5 , y = 0 )
+    exp_label = tk.Label(master= root , text="Choose a file using the 'Upload' button \n Then click 'View Data'" ,font='Consolas 12' )
+    exp_label.place(x = 5 , y = 5 )
+
+    # Logo png
+    # logo = tk.PhotoImage(file = "./anlLogo.png")
+    # logo_label = tk.Label(master = root , image = logo)
+    # logo_label.place(x = 70 , y = 0)
 
     # quit button
     quit_button = tk.Button(master = root , text = 'Quit' , width = 10 , font='Consolas 12', command = root.destroy)
@@ -91,7 +97,7 @@ def createAndRunApp():
 
     # Creator label
     creator_label = tk.Label(master = root , text = 'Created by: Eyal Cohen')
-    creator_label.place(x = 260 , y = 172)
+    creator_label.place(x = 260 , y = 177)
 
     # pack widgets
     # exp_label.pack()
@@ -101,7 +107,6 @@ def createAndRunApp():
     root.mainloop()
 
 def main():
-    # Think of an app name!
     createAndRunApp()
     
 if __name__ == "__main__":
