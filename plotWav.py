@@ -20,7 +20,7 @@ def plotView(fig, dataToView, num, channel_cnt):
     ax.plot(dataToView)
 
 def main():
-    data = wavfile.read('C:/Users/eyala/Documents/Eyal/work/sound_scripts/chirp_37k-47k.wav')  # data[0] = sampRate , data[1] = all channels of data
+    data = wavfile.read('C:/Users/eyala/Documents/Eyal/work/sound_tools_private/cw_18k-18k.wav')  # data[0] = sampRate , data[1] = all channels of data
     fig = plt.figure(figsize=(12, 8))
     plot_flag = 0
     plt.subplots_adjust(wspace=0.4, hspace=0.4)

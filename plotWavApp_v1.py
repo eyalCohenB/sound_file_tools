@@ -75,7 +75,7 @@ def createAndRunApp():
     exp_label.place(x = 5 , y = 5 )
 
     # Logo png
-    # logo = tk.PhotoImage(file = "./anlLogo.png")
+    # logo = tk.PhotoImage(file = "./imgs/anlLogo.png")
     # logo_label = tk.Label(master = root , image = logo)
     # logo_label.place(x = 70 , y = 0)
 
