@@ -44,6 +44,6 @@ This script is designed to conveniently create `.wav` files (currently command-l
 
 3. The script will generate `.wav` files. Here's an example of a generated 1-channel chirp signal:
 
-   ![1 Channel Chirp](images/1_channel_chirp.png)
+   ![1 Channel Chirp Signal](images/1_channel_chirp_signal.png)
 
 Once generated, this signal can be analyzed and visualized using `plotWavApp_v1.py`, as shown in the next section.
