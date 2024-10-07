@@ -57,30 +57,33 @@ def main():
     while signal_type not in ["chirp" , "cw" , "cwinc"]:
         signal_type = input("Incorrect signal type, which signal do you want to create? (chirp / cw / cwinc): ")
 
-    if signal_type in [ "chirp" , "cw"]:
-        print("Enter Values as instructed to create a Chirp or CW signal.\nNote: if you want to create a CW,\nsimply enter the same values for start & end frequency.")
+    if signal_type == "chirp": #[ "chirp" , "cw"]:
+        # print("Enter Values as instructed to create a Chirp or CW signal.\nNote: if you want to create a CW,\nsimply enter the same values for start & end frequency.")
+        print("Enter Values as instructed to create a Chirp .")
+    elif signal_type == "cw":
+        print("Enter Values as instructed to create a CW signal.\nsimply entering the same values for start & end frequency will result in a CW.")
     else:
         print("Enter Values as instructed to create an increasing CW.\nNote: if you want to create a simple CW(not increasing),\nsimply enter the same values for start & end frequency.")
 
     #dynamic vars
-    sample_rate = int(float(input("Sample Rate(kilo): ")) * 1000)
-    start_freq = int(float(input("Start Frequency(kilo): ")) * 1000)
-    end_freq = int(float(input("End Frequency(kilo): ")) * 1000)
+    sample_rate = int(float(input("Sample Rate(KHz): ")) * 1000)
+    start_freq = int(float(input("Start Frequency(Khz): ")) * 1000)
+    end_freq = int(float(input("End Frequency(Khz): ")) * 1000)
     signal_duration = float(input("Signal Duration(sec): "))
     silence_duration = float(input("Silence Duration(sec): "))
-    repeat = int(input("Repeat(int, times signal is repeated on each frequency): "))
+    repeat = int(input("Repeat[int, times signal is repeated (if cwinc than at each frequency)]:"))
     #static vars
     amplitude = 0.5 # amp is risky, try to keep <= 0.5
     path = os.getcwd()
     path = path.replace("\\","/")
     # User Verification
     print("\nYou Chose:")
-    print("signal type",signal_type)
-    print("sample rate: ",sample_rate)
-    print("start freq: ",start_freq)
-    print("end freq: ",end_freq)
-    print("signal duration: ",signal_duration)
-    print("silence duration: ",silence_duration)
+    print("signal type:",signal_type)
+    print("sample rate:",sample_rate)
+    print("start freq:",start_freq)
+    print("end freq:",end_freq)
+    print("signal duration:",signal_duration)
+    print("silence duration:",silence_duration)
     print("repeat: ",repeat)
     valid_falg = input("Create '.wav' file? (y/n): ")
     if valid_falg == "y":
@@ -88,6 +91,7 @@ def main():
             #***Chirp Or CW Activation***
             chirp_cw_creator(sample_rate,start_freq,end_freq,signal_duration,silence_duration,repeat,amplitude,path)
         else:
+            #***CW invremented Activation***
             cwinc_creator(sample_rate,start_freq,end_freq,signal_duration,silence_duration,repeat,amplitude,path)
     else:
         main()
