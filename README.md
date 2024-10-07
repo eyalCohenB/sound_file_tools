@@ -46,4 +46,4 @@ This script is designed to conveniently create `.wav` files (currently command-l
 
    ![1 Channel Chirp Signal](images/1_channel_chirp_signal.png)
 
-Once generated, this signal can be analyzed and visualized using `plotWavApp_v1.py`, as shown in the next section.
+Once generated, this signal can be analyzed and visualized using `plotWavApp_v1.py`, as shown in the previous section.
