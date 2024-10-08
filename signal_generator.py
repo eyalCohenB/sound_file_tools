@@ -38,7 +38,7 @@ def cwinc_creator(sample_rate,start_freq,end_freq,signal_duration,silence_durati
     
     data_to_save =  np.zeros(sample_rate , dtype=np.float32) # start every file with alittle silence to let hydrophones amp up
     loop_repeats = int((end_freq - start_freq) // 1000)
-    print("loop_repeats",loop_repeats)
+    # print("loop_repeats",loop_repeats)
     if loop_repeats == 0:
         data_to_save = np.concatenate([data_to_save,create_cw_signal(sample_rate,start_freq,signal_duration,silence_duration,repeat,amplitude)])
     for _ in range(loop_repeats):
@@ -84,7 +84,7 @@ def main():
     print("end freq:",end_freq)
     print("signal duration:",signal_duration)
     print("silence duration:",silence_duration)
-    print("repeat: ",repeat)
+    print("repeated signals at each frequency:",repeat)
     valid_falg = input("Create '.wav' file? (y/n): ")
     if valid_falg == "y":
         if signal_type in ["chirp" , "cw"]:
